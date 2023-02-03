@@ -17,10 +17,16 @@ export default function Scoops() {
     return sum.length;
   }
 
+  function handleBasket(item) {
+    const filtred = basket.filter((i) => i.name !== item.name);
+    setBasket(filtred);
+  }
   return (
     <div className="container">
-      <h1 className="text-start my-4">Çeşitler</h1>
-      <h2 className="text-start mb-5">Ücret: {basket.length * 3} $</h2>
+      <h1 className="text-start my-3">Çeşitler</h1>
+      <h2 className="text-start mb-5" data-testid="ucret">
+        Ucret: {basket.length * 3} $
+      </h2>
       <p className="lead text-start">Tanesi 3$</p>
       <div className="row d-flex gap-4">
         {items.map((item) => {
@@ -28,19 +34,30 @@ export default function Scoops() {
           return (
             <div
               key={item.name}
-              className="col-3 gap-2"
-              style={{ maxWidth: '200px' }}
+              className="col-3 gap-2 d-flex flex-column align-items-center mx-5"
+              style={{ maxWidth: '150px' }}
             >
               <img src={item.imagePath} className="w-100" alt="cesit" />
-              <p>{item.name}</p>
+              <label htmlFor={item.name}>{item.name}</label>
+              <div className="d-flex gap-4 mt-4">
+                <button
+                  className="btn btn-danger"
+                  onClick={() => handleBasket(item)}
+                  id={`${item.name}-reset`}
+                >
+                  Sıfırla
+                </button>
 
-              <span className="lead mx-3">{amount}</span>
-              <button
-                className="btn btn-info"
-                onClick={() => setBasket([...basket, item])}
-              >
-                +
-              </button>
+                <span className="lead mx-3">{amount}</span>
+
+                <button
+                  id={item.name}
+                  className="btn btn-info"
+                  onClick={() => setBasket([...basket, item])}
+                >
+                  Ekle
+                </button>
+              </div>
             </div>
           );
         })}

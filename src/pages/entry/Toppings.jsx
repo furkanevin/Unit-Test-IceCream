@@ -22,16 +22,16 @@ export default function Toppings() {
   console.log(subTotal);
   return (
     <div className="container">
-      <h1 className="text-start my-5">Soslar</h1>
-      <h2 className="text-start mb-5">Ücret: {subTotal.length * 2}</h2>
+      <h1 className="text-start my-4">Soslar</h1>
+      <h2 className="text-start mb-1">Ücret: {subTotal.length * 2}</h2>
 
-      <p className="lead text-start">Tanesi 2$</p>
+      <p className="lead text-start my-4">Tanesi 2$</p>
       <div className="row">
         {items.map((item) => (
           <div
             key={item.name}
             className="col-3 gap-2"
-            style={{ maxWidth: '200px' }}
+            style={{ maxWidth: '140px' }}
           >
             <img src={item.imagePath} alt="sos" className="w-100" />
             <p>{item.name}</p>
