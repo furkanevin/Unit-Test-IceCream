@@ -1,4 +1,4 @@
-#Ice Cream
+<h1>Ice Cream Maker</h1>
 <h2>Tech </h2>
 <p> React | Axios | Json-Server Used To develope this app <p> 
 <p>React Testing Library / Jest Used to test Units <p>
