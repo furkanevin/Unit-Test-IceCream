@@ -1,11 +1,12 @@
 import './App.css';
 import SummaryForm from './pages/summary/SummaryForm';
-import Options from './pages/entry/Options';
+import OrderSummary from './pages/summary/OrderSummary';
+import WelcomePage from './pages/entry/WelcomePage';
 
 function App() {
   return (
     <div className="App">
-      <Options />
+      <WelcomePage />
     </div>
   );
 }
