@@ -6,11 +6,11 @@ test('çeşitlerin fiyat toplamının değişimini gösterir', async () => {
   const user = userEvent.setup();
   render(<Scoops />);
 
-  //fiyat 0 tl den başlasın
+  //! fiyat 0 tl den başlasın
   const cesitlerFiyat = screen.getByTestId('ucret');
   expect(cesitlerFiyat).toHaveTextContent('0');
 
-  //bir tane vanilyalı ekle fiyatı kontrol et
+  //! bir tane vanilyalı ekle fiyatı kontrol et
   const vanillaBtn = await screen.findByRole('button', {
     name: 'Vanilla',
   });
@@ -27,4 +27,10 @@ test('çeşitlerin fiyat toplamının değişimini gösterir', async () => {
   expect(cesitlerFiyat).toHaveTextContent('9');
 
   //! Sıfırlamayı test et
+  const [delMint, DelVanilla, DelChoco, DelCaramel] =
+    await screen.findAllByRole('button', {
+      name: 'Sıfırla',
+    });
+  await user.click(DelChoco);
+  expect(cesitlerFiyat).toHaveTextContent('3');
 });
